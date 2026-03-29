@@ -1,0 +1,59 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+    Layout = null;
+}
+
+<!DOCTYPE html> 
+ <html> 
+    <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>@ViewData["Title"] CEC Announcements-login</title>
+            
+           
+            <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+            <link rel="stylesheet" href="~/CEC_website.styles.css" asp-append-version="true" />
+            <link rel="icon" href="~/Icon/Cebu_Eastern_College_Logo.png" asp-append-version="true" />
+    </head>
+
+        <body class="loginpage">
+
+            <div class="container">
+
+                <div class="login-card">
+                     
+                        <div class="logo-section">
+
+                            <img src="~/background_img/Cebu_Eastern_College_Logo.png" />
+
+                        </div>
+
+                        <div class="form-section">
+                             
+                            <h2>Cebu Easten College Announcement</h2>
+                            
+                            <form method="post">
+                                
+                                <input type="text" name="username" placeholder="Username" required />
+
+                                <input type="password" name="password" placeholder="Password" required/>
+
+                                <button type="submit">Login</button>
+
+                            </form>
+                          
+                        </div>
+                     
+                </div>
+
+            </div>
+
+            <script src="~/lib/jquery/dist/jquery.min.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="~/js/site.js" asp-append-version="true"></script>
+               
+        </body>
+</html>
