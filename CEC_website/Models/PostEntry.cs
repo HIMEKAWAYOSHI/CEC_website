@@ -13,6 +13,7 @@ namespace CEC_website.Models
 
         [Required]
         public required string Content { get; set; } = string.Empty;
+
         public string? ImagePath { get; set; }
         public DateTime DayPosted { get; set; } = DateTime.Now;    
     }

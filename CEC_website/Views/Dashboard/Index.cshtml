@@ -51,10 +51,42 @@
             </header>
            
           
-            <main class="content">
-                
-               
+             <main class="content">
+                    
+                    
+                          <div class="index-container">
 
+                              @foreach (var post in Model)
+                              {
+                                  <div class="index-card">
+
+                                      <div class="index-header">
+                                          <h3>@post.Title</h3>
+                                          <small>@post.DayPosted</small>
+                                      </div>
+
+                                      <div class="index-content">
+
+                                          <p>@Html.Raw(post.Content)</p>
+
+                                          @if (!string.IsNullOrEmpty(post.ImagePath))
+                                          {
+                                              <img src="@post.ImagePath" class="index-image" />
+                                          }
+                                      </div>
+
+                                      @if (Context.Session.GetString("Role") == "Admin")
+                                      {
+                                          <div class="index-actions">
+                                              <a asp-action="Edit" asp-route-id="@post.Id">Edit</a>
+                                              <a asp-action="Delete" asp-route-id="@post.Id">Delete</a>
+                                          </div>
+                                      }
+
+                                  </div>
+                              }
+
+                          </div>
             </main>
 
 

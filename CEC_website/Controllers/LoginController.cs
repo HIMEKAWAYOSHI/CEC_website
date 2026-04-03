@@ -18,7 +18,7 @@ namespace CEC_website.Controllers
 
             if (Username == "CecAdmin2026" && Password == "Admin123456")
             {
-                HttpContext.Session.SetString("Role", "Admin");
+                HttpContext.Session.SetString("Role", "Admin"); 
                 return RedirectToAction("Index", "Dashboard");
 
             }

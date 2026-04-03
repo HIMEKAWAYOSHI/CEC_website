@@ -7,101 +7,94 @@
 
     var role = Context.Session.GetString("Role");
 
-    @model List<PostEntry>
+    @model List<CEC_website.Models.PostEntry>
+   
+  
 }
 
 <!DOCTYPE html>
 
-<html>
+        <html>
 
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+              <head>
+                  <meta charset="utf-8" />
+                  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+              
+                  <title>@ViewData["Title"] CEC Announcements-Create</title>
+              
+                  <!--<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />-->
+                  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+                  <link rel="stylesheet" href="~/CEC_website.styles.css" asp-append-version="true" />
+                  <link rel="icon" href="~/Icon/Cebu_Eastern_College_Logo.png" asp-append-version="true" />
+              </head>
+              
+              <body>
 
-    <title>@ViewData["Title"] CEC Announcements-Dashboard</title>
+                  <header>
 
-    <!--<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />-->
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/CEC_website.styles.css" asp-append-version="true" />
-    <link rel="icon" href="~/Icon/Cebu_Eastern_College_Logo.png" asp-append-version="true" />
-</head>
+                      <nav>
 
-<body>
-    <header>
-        <nav>
-            <div class="dashboard-navbar">
+                          <div class="dashboard-navbar">
+              
+                              <div class="dashboard-buttons">
+              
+                                  <a class="logout-btn" asp-area="" asp-controller="Dashboard" asp-action="Logout">Logout</a>
+              
+                                  @if (role == "Admin")
+                                  {
+                                      <a class="logout-btn" asp-area="" asp-controller="Dashboard" asp-action="Index">Dashbaord</a>
+              
+                                  }
+              
+                              </div>
+              
+                              <h1 class="dashboard-name">CEBU EASTERN COLLEGE ANNOUNCEMENTS</h1>
+              
+                          </div>
 
-                <div class="dashboard-buttons">
+                      </nav>
 
-                    <a class="logout-btn" asp-area="" asp-controller="Dashboard" asp-action="Logout">Logout</a>
+                  </header>
+              
+              
+                  <main class="content">
 
-                    @if (role == "Admin")
-                    {
-                        <a class="logout-btn" asp-area="" asp-controller="Dashboard" asp-action="Index">Dashbaord</a>
+                                   
+              
+                         <div class="create-container">
 
-                    }
+                                   @if (ViewBag.Error != null)
+                                   {
+                                       <p class="error-message">@ViewBag.Error</p>
+                                   }
 
-                </div>
+                                   <form asp-action="Create" method="post" enctype="multipart/form-data">
 
-                <h1 class="dashboard-name">CEBU EASTERN COLLEGE ANNOUNCEMENTS</h1>
+                                       <label>Title:</label>
+                                       <input type="text" name="Title" class="create-input" />
 
-            </div>
-        </nav>
-    </header>
+                                       <label>Content:</label>
+                                       <textarea name="Content" class="create-textarea"></textarea>
 
+                                       <input type="file" name="image" class="create-file" />
 
-    <main class="content">
+                                       <button type="submit" class="create-btn">Post Announcement</button>
 
-        <div>
-            <table class="Create-table">
-
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Content</th>
-                        <th>Images</th>
-                        <th>DayPosted</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <!--kani diri para na HttGet didto sa data base using model PostEntry-->
-                         @foreach (var entry in Model)
-                           {
-                                   <tr>
-                                       <td>@entry.Title</td>
-                                       <td>@entry.Content</td>
-                                       <td>@entry.ImagePath</td>
-                                       <td>@entry.DayPosted</td>
-                                       <td>Edit and Delete</td>
-                                   </tr>
-                           }
-                   
-
-
-                </tbody>
-
-
-
-
-
-
-            </table>
-        </div>
-
-
-
-    </main>
-
-
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-
-</body>
-
+                                    </form>
+                         </div>
+                       
+              
+                      
+                  </main>
+              
+              
+                  <script src="~/lib/jquery/dist/jquery.min.js"></script>
+                  <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+                  <script src="~/js/site.js" asp-append-version="true"></script>
+              
+              </body>
+              
 
 
 </html>

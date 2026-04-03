@@ -1,0 +1,80 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    @model CEC_website.Models.PostEntry;
+
+    var role = Context.Session.GetString("Role");
+
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] CEC Announcements-Edit</title>
+
+    <!--<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />-->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/CEC_website.styles.css" asp-append-version="true" />
+    <link rel="icon" href="~/Icon/Cebu_Eastern_College_Logo.png" asp-append-version="true" />
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="dashboard-navbar">
+
+                <div class="dashboard-buttons">
+
+                    <a class="logout-btn" asp-area="" asp-controller="Dashboard" asp-action="Logout">Logout</a>
+
+                    @if (role == "Admin")
+                    {
+                        <a class="logout-btn" asp-area="" asp-controller="Dashboard" asp-action="Index">Dashbaord</a>
+
+                    }
+
+                </div>
+                     
+                <h1 class="dashboard-name">CEBU EASTERN COLLEGE ANNOUNCEMENTS</h1>
+
+            </div>
+        </nav>
+    </header>
+
+    <main class="content">
+
+            <div class="create-container">
+                 <form asp-controller="Dashboard" asp-action="Edit" method="post">
+                           
+                           <input type="hidden" name="Id" value="@Model.Id" />
+
+                           <label>Title:</label>
+                           <input type="text" class="create-input" name="Title" value="@Model.Title" />
+
+                           
+                           <label>Content:</label>
+                           <textarea class="create-input" name="Content">@Model.Content</textarea>
+
+
+                           <input type="hidden" name="ImagePath" value="@Model.ImagePath" />
+
+                           <input type="hidden" name="DayPosted" value="@Model.DayPosted" />
+
+                           <button class="create-btn" type="submit">Save Changes</button>
+                    
+                 </form>
+            </div>
+
+
+    </main>
+
+</body>
+
+</html>
