@@ -185,7 +185,7 @@ namespace CEC_website.Controllers
         {
             if (HttpContext.Session.GetString("Role") != "Admin")
             {
-                return RedirectToAction("index", "Dashboard");
+                return RedirectToAction("Index", "Dashboard");
             }
 
             var post = _db.PostDBs.Find(id);
@@ -193,6 +193,17 @@ namespace CEC_website.Controllers
             if (post == null)
             {
                 return RedirectToAction("Index", "Dashboard");
+            }
+
+            // delete the image file from the server
+            if (!string.IsNullOrEmpty(post.ImagePath))
+            {
+                string filePath = Path.Combine("wwwroot", post.ImagePath.TrimStart('/'));
+
+                if (System.IO.File.Exists(filePath))
+                {
+                    System.IO.File.Delete(filePath); // kani ghe delet ang literal file bai
+                }
             }
 
             _db.PostDBs.Remove(post);
