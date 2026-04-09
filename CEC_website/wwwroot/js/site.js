@@ -54,20 +54,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 100);
 }); //create page animation
 
-/*document.addEventListener('DOMContentLoaded', function () {
-    const card = document.querySelector('.edit-animation');
-    if (!card) return;
-
-    // Start hidden
-    card.style.opacity = 0;
-    card.style.transform = 'translateY(30px)';
-    // Animate in
-      setTimeout(() => {
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        card.style.opacity = 1;
-        card.style.transform = 'translateY(0)';
-    }, 100);
-});*/
 
 
 
