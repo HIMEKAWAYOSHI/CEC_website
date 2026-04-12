@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddSession(); // <----------- para na control logic to another logic
+builder.Services.AddSession(); // <--- para na control logic to another logic
 builder.Services.AddDbContext<AddPostEntriesTable>(
        options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
