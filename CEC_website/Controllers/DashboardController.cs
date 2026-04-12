@@ -68,13 +68,13 @@ namespace CEC_website.Controllers
                 ViewBag.Error = "Something went wrong. Please try again!";
                 return View();
             }
-            // check if user is Admin
+            
             if (HttpContext.Session.GetString("Role") != "Admin")
             {
                 return RedirectToAction("Index", "Dashboard");
             }
 
-            // check if Title and Content are empty
+            
             if (string.IsNullOrWhiteSpace(post.Title) || string.IsNullOrWhiteSpace(post.Content))
             {
                 ViewBag.Error = "Title and Content cannot be empty!";
@@ -98,13 +98,13 @@ namespace CEC_website.Controllers
 
                 string folderpath = "wwwroot/AdminPost";
 
-                // create folder if it doesn't exist
+               
                 if (!Directory.Exists(folderpath))
                 {
                     Directory.CreateDirectory(folderpath);
                 }
 
-                // generate unique file name to avoid duplicates
+                // generate 
                 string fileName = Guid.NewGuid().ToString() + extension;
                 string path = Path.Combine(folderpath, fileName);
 
